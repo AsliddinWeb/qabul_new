@@ -1,0 +1,16 @@
+{% extends 'cabinet.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}Ariza topshirish{% endblock title %}
+
+{% block div %}
+    <div class="passport card p-3">
+        <h1 class="text-center text-success">O'qishga topshirish</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ariza_form|crispy}}
+            <button type="submit" class="btn btn-primary">Topshirish</button>
+        </form>
+    </div>
+{% endblock div %}

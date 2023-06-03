@@ -1,0 +1,347 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+{{ site_settings.site_title }}
+{% endblock title %}
+
+{% block content %}
+<div role="main" class="main">
+
+			<section class="section section-height-3 section-with-shape-divider position-relative border-0 m-0"
+				data-plugin-parallax data-plugin-options="{'speed': 1.5, 'parallaxHeight': '120%'}"
+				data-image-src="{{ home_section.background_image.url }}">
+
+				<img src="{{ home_section.image.url }}"
+					class="img-fluid position-absolute top-0 right-0 d-none d-md-block appear-animation"
+					data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1100" alt="" />
+				<div class="container pb-5 pb-xl-0 mt-md-3 mb-5">
+					<div class="row">
+						<div class="col-md-7 col-lg-12">
+							<div class="appear-animation" data-appear-animation="fadeInUpShorter"
+								data-appear-animation-delay="0">
+								<h1 class="custom-text-background custom-big-font-size-1 text-14 font-weight-bold float-xl-end clearfix line-height-1 custom-ws-mobile-wrap ws-nowrap pb-2 mb-3 mb-xl-5"
+									style="background-image: url({% static 'img/demos/business-consulting-3/backgrounds/text-background.jpg' %}); background-size: cover;">
+									{{ home_section.h1 }}</h1>
+							</div>
+						</div>
+					</div>
+					<div class="row pb-5 mb-5">
+						<div class="col-md-7 col-xl-5 pb-5 pb-xl-0 mb-5">
+							<strong
+								class="d-block font-weight-semibold text-color-dark text-5-5 line-height-4 mb-3 pb-1 appear-animation"
+								data-appear-animation="fadeInUpShorter" data-appear-animation-delay="500">{{ home_section.title|safe }}</strong>
+							<p class="text-3-5 mb-4 appear-animation" data-appear-animation="fadeInUpShorter"
+								data-appear-animation-delay="750">{{ home_section.body }}</p>
+							<a href="{{ home_section.button_href }}" data-hash data-hash-offset="0" data-hash-offset-lg="100"
+								class="d-inline-flex align-items-center text-decoration-none appear-animation"
+								data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1000">
+								<img width="30" height="30" src="{% static 'img/demos/business-consulting-3/icons/arrow-right.svg' %}" alt=""
+									data-icon
+									data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-primary me-2'}" />
+								{{ home_section.button_title }}
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="shape-divider shape-divider-bottom" style="height: 212px;">
+					<div class="shape-divider-horizontal-animation shape-divider-horizontal-animation-to-left">
+						<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+							x="0px" y="0px" viewBox="0 0 1920 212" preserveAspectRatio="xMinYMin">
+							<polygon fill="#F3F3F3" points="0,75 479,161 1357,28 1701,56 1920,26 1920,213 0,212 " />
+							<polygon fill="#FFFFFF" points="0,91 481,177 1358,44 1702,72 1920,42 1920,212 0,212 " />
+						</svg>
+					</div>
+				</div>
+			</section>
+
+			<div class="container" style="margin-top: -310px;">
+				<div class="row">
+					<div class="col-xl-7 ms-xl-auto">
+						<div class="owl-carousel owl-theme custom-carousel-box-shadow-1 custom-dots-style-1 mb-0"
+							data-plugin-options="{'responsive': {'576': {'items': 1}, '768': {'items': 2}, '992': {'items': 2}, '1200': {'items': 2}}, 'margin': 20, 'loop': false, 'nav': false, 'autoplay': true, 'autoplayTimeout': 5000, 'dots': true}"
+							style="height: 398px;">
+							{% for i in faculties %}
+								<div>
+								<a
+									class="custom-link-hover-effects text-decoration-none"
+									data-cursor-effect-hover="plus">
+									<div class="card border-0">
+										<div class="card-body text-center py-5">
+											<img width="75" height="75"
+												src="{{i.icon.url}}" alt=""
+												data-icon
+												data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-primary'}"
+												style="width: 75px; height: 75px;" />
+											<div class="custom-crooked-line">
+												<img width="154" height="26"
+													src="{% static 'img/demos/business-consulting-3/icons/infinite-crooked-line.svg' %}"
+													alt="" data-icon
+													data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-primary'}"
+													style="width: 154px; height: 26px;" />
+											</div>
+											<h2 class="text-5 font-weight-semibold mb-1">{{i.title}}</h2>
+											<p class="pb-1 mb-2">{{i.body}}</p>
+											<a href="{{i.button_href}}"
+												class="custom-view-more d-inline-flex font-weight-medium text-color-primary">
+												{{i.button_title}}
+												<img width="27" height="27"
+													src="{% static 'img/demos/business-consulting-3/icons/arrow-right.svg' %}" alt=""
+													data-icon
+													data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-primary ms-2'}"
+													style="width: 27px;" />
+											</a>
+										</div>
+									</div>
+								</a>
+							</div>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+
+				<div id="aboutus" class="row align-items-xl-center pt-4 mt-5">
+					<div class="col-md-10 col-lg-6 mb-5 mb-lg-0">
+						<div class="row row-gutter-sm">
+							<div class="col-6">
+								<img src="{{about_section.image_1.url}}" width="100%" class="img-fluid box-shadow-5" alt="" />
+							</div>
+							<div class="col-6">
+								<img src="{{about_section.image_2.url}}" class="img-fluid box-shadow-5 mb-4" alt="" />
+								<img src="{{about_section.image_3.url}}" class="img-fluid box-shadow-5" alt="" />
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6 ps-lg-4 ps-xl-5">
+						<h2 class="custom-highlight-text-1 d-inline-block line-height-5 text-4 positive-ls-3 font-weight-medium text-color-primary mb-2 appear-animation"
+							data-appear-animation="fadeInUpShorter">{{about_section.subtitle}}</h2>
+						<h3 class="text-9 text-lg-5 text-xl-9 line-height-3 text-transform-none font-weight-semibold mb-4 mb-lg-3 mb-xl-4 appear-animation"
+							data-appear-animation="fadeInUpShorter" data-appear-animation-delay="250">{{about_section.title}}</h3>
+						<p class="text-3-5 pb-1 mb-4 mb-lg-2 mb-xl-4 appear-animation"
+							data-appear-animation="fadeInUpShorter" data-appear-animation-delay="500">{{about_section.body}}</p>
+						<div class="row align-items-center pb-2 mb-4 mb-lg-1 mb-xl-4 appear-animation"
+							data-appear-animation="fadeInUpShorter" data-appear-animation-delay="750">
+							<div class="col-5">
+								<div class="d-flex">
+									<img width="63" height="63" src="{% static 'img/demos/business-consulting-3/icons/label.svg' %}"
+										alt="" data-icon
+										data-plugin-options="{'onlySVG': true, 'extraClass': 'd-lg-none d-xl-block'}" />
+									<span class="text-3 font-weight-bold text-color-dark pt-2 ms-2">
+										<strong class="d-block font-weight-bold text-9 mb-2">{{about_section.count}}</strong>
+										{{about_section.what}}
+									</span>
+								</div>
+							</div>
+							<div class="col-7">
+								<blockquote class="custom-blockquote-style-1 m-0 pt-1 pb-2">
+									<p class="mb-0">{{about_section.what_body}}</p>
+								</blockquote>
+							</div>
+						</div>
+						<div class="appear-animation" data-appear-animation="fadeInUpShorter"
+							data-appear-animation-delay="1000">
+							<a href="{{about_section.button_href}}"
+								class="btn btn-primary custom-btn-style-1 font-weight-semibold btn-px-4 btn-py-2 text-3-5"
+								data-cursor-effect-hover="plus" data-cursor-effect-hover-color="light"><span>{{about_section.button_title}}</span></a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<section id="talim-yonalishlari"
+				class="section section-height-4 section-with-shape-divider bg-color-grey-scale-1 border-0 pb-5 m-0">
+				<div class="shape-divider" style="height: 123px;">
+					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+						x="0px" y="0px" viewBox="0 0 1920 123" preserveAspectRatio="xMinYMin">
+						<polygon fill="#F3F3F3" points="0,90 221,60 563,88 931,35 1408,93 1920,41 1920,-1 0,-1 " />
+						<polygon fill="#FFFFFF" points="0,75 219,44 563,72 930,19 1408,77 1920,25 1920,-1 0,-1 " />
+					</svg>
+				</div>
+				<div class="container mt-4">
+					<div class="row justify-content-center">
+						<div class="col-lg-11 col-xl-10 text-center">
+							<h2 class="custom-highlight-text-1 d-inline-block line-height-5 text-4 positive-ls-3 font-weight-medium text-color-primary mb-2 appear-animation"
+								data-appear-animation="fadeInUpShorter" data-appear-animation-delay="250">
+								Universitetimiz
+							</h2>
+							<h3 class="text-9 line-height-3 text-transform-none font-weight-semibold mb-3 pb-1 appear-animation"
+								data-appear-animation="fadeInUpShorter" data-appear-animation-delay="500">Ta'lim
+								yo'nalishlari</h3>
+							<p class="text-3-5 pb-3 mb-4 appear-animation" data-appear-animation="fadeInUpShorter"
+								data-appear-animation-delay="750">Universitetimizda faoliyat olib borayotgan barcha
+								ta'lim yo'nalishlari </p>
+						</div>
+					</div>
+					<div class="row row-gutter-sm justify-content-center mb-5 appear-animation"
+						data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1000">
+
+						{% for i in talim_yonalishlari %}
+							<div class="col-sm-9 col-md-6 col-lg-3 mb-4">
+							<a href="{{i.button_href}}"
+								class="custom-link-hover-effects text-decoration-none" data-cursor-effect-hover="plus">
+								<div class="card box-shadow-4">
+									<div class="card-img-top position-relative overlay overlay-show">
+										<div class="position-absolute bottom-0 left-0 w-100 py-0 px-3 z-index-3">
+											<div class="font-weight-semibold text-color-light text-4 mb-1">{{i.title}}</div>
+											<h6 class="font-weight-semibold text-color-grey text-2 mb-1">{{i.p1}}</h6>
+											<h6 class="font-weight-semibold text-color-grey text-2 mb-1">{{i.p2}}</h6>
+											<div class="custom-crooked-line">
+												<img width="154" height="26"
+													src="{% static 'img/demos/business-consulting-3/icons/infinite-crooked-line.svg' %}"
+													alt="" data-icon
+													data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-primary'}"
+													style="width: 154px;" />
+											</div>
+										</div>
+										<img src="{{i.image.url}}"
+											class="img-fluid" alt="Card Image" />
+									</div>
+									<div class="card-body d-flex align-items-center custom-view-more px-4">
+										<p class="card-text w-100 mb-0">{{i.button_title}}</p>
+										<img width="50" height="50" class="w-auto"
+											src="{% static 'img/demos/business-consulting-3/icons/arrow-right.svg' %}" alt="" data-icon
+											data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-primary'}"
+											style="width: 50px;" />
+									</div>
+								</div>
+							</a>
+						</div>
+						{% endfor %}
+					</div>
+					<!-- <div class="row">
+						<div class="col text-center">
+							<a href="demo-business-consulting-3-services.html"
+								class="btn btn-primary custom-btn-style-1 font-weight-semibold btn-px-4 btn-py-2 text-3-5"
+								data-cursor-effect-hover="plus" data-cursor-effect-hover-color="light">
+								<span>Barcha yo'nalishlar</span>
+							</a>
+						</div>
+					</div> -->
+				</div>
+			</section>
+
+
+
+
+			<section class="section section-height-3 border-0 m-0 lazyload bg-white" >
+				<div class="container py-4">
+					<div class="row">
+						<div class="col text-center">
+							<h2 class="custom-highlight-text-1 d-inline-block line-height-5 text-4 positive-ls-3 font-weight-medium text-color-primary mb-2 appear-animation"
+								data-appear-animation="fadeInUpShorter" data-appear-animation-delay="250">
+								Universitetimiz
+							</h2>
+							<h3 class="text-9 line-height-3 text-transform-none font-weight-semibold text-color-dark pb-3 mb-4 appear-animation"
+								data-appear-animation="fadeInUpShorter" data-appear-animation-delay="500">Litsenziyasi</h3>
+						</div>
+					</div>
+					<div class="row d-flex justify-content-center">
+						{% for i in litsenziya %}
+							<div class="card mt-3">
+							<div class="row g-0">
+								<div class="col-lg-10">
+									<div class="card-body">
+										<h4 class="card-title mb-1 text-4 font-weight-bold">{{i.title}}</h4>
+										<p class="card-text mb-2">{{i.body}}</p>
+										<a type="save" target="_blank"
+											href="{{i.button_href}}"
+											class="read-more text-color-primary font-weight-semibold text-2">{{i.button_title}} <i class="fas fa-angle-right position-relative top-1 ms-1"></i></a>
+									</div>
+								</div>
+								<div class="border col-lg-2 p-3">
+									<img width="170px" height="140px" src="{{i.image.url}}"
+										class="img-fluid p-relative left-1 rounded-end" alt="Xiu-Edu.UZ">
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+				</div>
+			</section>
+			<section id="qollanma" class="section section-height-4 section-with-shape-divider bg-color-grey-scale-1 border-0 pb-5 m-0">
+
+				<div class="shape-divider" style="height: 123px;">
+					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+						x="0px" y="0px" viewBox="0 0 1920 123" preserveAspectRatio="xMinYMin">
+						<polygon fill="#F3F3F3" points="0,90 221,60 563,88 931,35 1408,93 1920,41 1920,-1 0,-1 " />
+						<polygon fill="#FFFFFF" points="0,75 219,44 563,72 930,19 1408,77 1920,25 1920,-1 0,-1 " />
+					</svg>
+				</div>
+				<div class="container pb-5">
+					<div class="row">
+						<div class="col">
+
+							<div class="row">
+								<div class="col pb-4">
+									<div class="row">
+										<div class="col text-center">
+											<h2 class="custom-highlight-text-1 d-inline-block line-height-5 text-4 positive-ls-3 font-weight-medium text-color-primary mb-2 appear-animation"
+												data-appear-animation="fadeInUpShorter" data-appear-animation-delay="250">{{video.subtitle}}
+											</h2>
+											<h3 class="text-9 line-height-3 text-transform-none font-weight-semibold text-color-dark pb-3 mb-4 appear-animation"
+												data-appear-animation="fadeInUpShorter" data-appear-animation-delay="500">{{video.title}}</h3>
+										</div>
+									</div>
+									<div class="ratio ratio-16x9">
+										<iframe frameborder="0" allowfullscreen=""
+											src="{{video.url}}"></iframe>
+									</div>
+
+
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="faq" class="section-height-3 bg-white py-3 border-0 m-0 lazyload"
+				data-bg-src="{% static 'img/demos/business-consulting-3/backgrounds/background-3.jpg">
+				<div class="container py-4">
+					<div class="row">
+						<div class="col text-center">
+							<h2 class="custom-highlight-text-1 d-inline-block line-height-5 text-4 positive-ls-3 font-weight-medium text-color-primary mb-2 appear-animation"
+								data-appear-animation="fadeInUpShorter" data-appear-animation-delay="250">Ko'p
+								beriladigan savollarga
+							</h2>
+							<h3 class="text-9 line-height-3 text-transform-none font-weight-semibold text-color-dark pb-3 mb-4 appear-animation"
+								data-appear-animation="fadeInUpShorter" data-appear-animation-delay="500">Javoblar</h3>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+
+
+
+							<div class="toggle toggle-primary m-0" data-plugin-toggle>
+								{% for i in faq %}
+									{% if forloop.counter == 1 %}
+										<section class="toggle active">
+									<a class="toggle-title">{{i.title}}</a>
+									<div class="toggle-content">
+										<p>{{i.body}}</p>
+									</div>
+								</section>
+									{% else %}
+										<section class="toggle">
+									<a class="toggle-title">{{i.title}}</a>
+									<div class="toggle-content">
+										<p>{{i.body}}</p>
+									</div>
+								</section>
+									{% endif %}
+								{% endfor %}
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+			</section>
+
+
+
+		</div>
+{% endblock content %}

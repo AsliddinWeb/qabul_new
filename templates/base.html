@@ -1,0 +1,302 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" data-style-switcher-options="{'changeLogo': false, 'colorPrimary': '#f04c23', 'colorSecondary': '#e36159', 'colorTertiary': '#2baab1', 'colorQuaternary': '#383f48', 'borderRadius': 0}">
+
+<head>
+		<!-- Basic -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title>
+			{% block title %}{% endblock title %} - XIUEDU.UZ
+		</title>
+
+		<meta name="keywords" content="{{ site_settings.keywords }}" />
+		<meta name="description" content="{{ site_settings.description }}">
+		<meta name="author" content="{{ site_settings.author }}">
+
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="{{ site_settings.favicon.url }}" type="image/x-icon" />
+		<link rel="apple-touch-icon" href="{{ site_settings.favicon.url }}">
+
+		<!-- Mobile Metas -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+
+		<!-- Web Fonts  -->
+		<link id="googleFonts" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800%7CShadows+Into+Light&amp;display=swap" rel="stylesheet" type="text/css">
+
+		<!-- Vendor CSS -->
+		<link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+		<link rel="stylesheet" href="{% static 'vendor/fontawesome-free/css/all.min.css' %}">
+		<link rel="stylesheet" href="{% static 'vendor/animate/animate.compat.css' %}">
+		<link rel="stylesheet" href="{% static 'vendor/simple-line-icons/css/simple-line-icons.min.css' %}">
+		<link rel="stylesheet" href="{% static 'vendor/owl.carousel/assets/owl.carousel.min.css' %}">
+		<link rel="stylesheet" href="{% static 'vendor/owl.carousel/assets/owl.theme.default.min.css' %}">
+		<link rel="stylesheet" href="{% static 'vendor/magnific-popup/magnific-popup.min.css' %}">
+
+		<!-- Theme CSS -->
+		<link rel="stylesheet" href="{% static 'css/theme.css' %}">
+		<link rel="stylesheet" href="{% static 'css/theme-elements.css' %}">
+		<link rel="stylesheet" href="{% static 'css/theme-blog.css' %}">
+		<link rel="stylesheet" href="{% static 'css/theme-shop.css' %}">
+
+		<!-- Demo CSS -->
+		<link rel="stylesheet" href="{% static 'css/demos/demo-business-consulting-3.css' %}">
+
+		<!-- Skin CSS -->
+		<link id="skinCSS" rel="stylesheet" href="{% static 'css/skins/skin-business-consulting-3.css' %}">
+
+		<!-- Theme Custom CSS -->
+		<link rel="stylesheet" href="{% static 'css/custom.css' %}">
+
+		{% block css %}{% endblock css %}
+
+		<!-- Head Libs -->
+		<script src="{% static 'vendor/modernizr/modernizr.min.js' %}"></script>
+
+	</head>
+
+	<body data-plugin-cursor-effect>
+		<div class="body">
+			<header id="header" class="header-effect-shrink" data-plugin-options="{'stickyEnabled': true, 'stickyEffect': 'shrink', 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': false, 'stickyChangeLogo': true, 'stickyStartAt': 120, 'stickyHeaderContainerHeight': 85}">
+				<div class="header-body border-top-0">
+					<div class="header-top header-top-default header-top-borders border-bottom-0 bg-color-light">
+						<div class="container">
+							<div class="header-row">
+								<div class="header-column justify-content-between">
+									<div class="header-row">
+										<nav class="header-nav-top w-100 w-md-50pct w-xl-100pct">
+											<ul class="nav nav-pills d-inline-flex custom-header-top-nav-background pe-5">
+												<li class="nav-item py-2 d-inline-flex z-index-1">
+													<span class="d-flex align-items-center p-0">
+														<span>
+															<img width="25" src="{% static 'img/demos/business-consulting-3/icons/phone.svg' %}" alt="Phone Icon" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-light'}" />
+														</span>
+														<a class="text-color-light text-decoration-none font-weight-semibold text-3-5 ms-2" href="tel:{{ site_settings.phone_1 }}" data-cursor-effect-hover="plus" data-cursor-effect-hover-color="light">{{ site_settings.phone_1 }}</a>
+													</span>
+													<span class="font-weight-normal align-items-center px-0 d-none d-xl-flex ms-3">
+														<span>
+															<img width="25" src="{% static 'img/demos/business-consulting-3/icons/phone.svg' %}" alt="Phone Icon" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-light'}" />
+														</span>
+														<a class="text-color-light text-decoration-none font-weight-semibold text-3-5 ms-2" href="tel:{{ site_settings.phone_2 }}" data-cursor-effect-hover="plus" data-cursor-effect-hover-color="light">{{ site_settings.phone_2 }}</a>
+													</span>
+												</li>
+											</ul>
+										</nav>
+										<div class="d-flex align-items-center w-100">
+											<ul class="ps-0 ms-auto mb-0">
+												<li class="nav-item font-weight-semibold text-1 text-lg-2 text-color-dark d-none d-md-flex justify-content-end me-3">
+													{{ site_settings.right_text }}
+												</li>
+											</ul>
+											<ul class="social-icons social-icons-clean social-icons-icon-dark social-icons-big m-0 ms-lg-2">
+												{% for i in social_networks %}
+													<li class="social-icons-instagram">
+													<a href="{{i.link}}" target="_blank" class="text-4" title="{{i.title}}" data-cursor-effect-hover="fit"><i class="{{i.icon}}"></i></a>
+												</li>
+												{% endfor %}
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="header-container container" style="height: 117px;">
+						<div class="header-row">
+							<div class="header-column">
+								<div class="header-row">
+									<div class="header-logo">
+										<a href="{% url 'home_page' %}">
+											<img alt="Qabul.XiuEdu.Uz" width="142" src="{{site_settings.logo.url}}">
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="header-column justify-content-end w-100">
+								<div class="header-row">
+									<div class="header-nav header-nav-links order-2 order-lg-1">
+										<div class="header-nav-main header-nav-main-square header-nav-main-text-capitalize header-nav-main-effect-1 header-nav-main-sub-effect-1">
+											<nav class="collapse">
+												<ul class="nav nav-pills" id="mainNav">
+
+													<li>
+														<a class="nav-link" href="{% url 'home_page' %}#aboutus">
+															Biz haqimizda
+														</a>
+													</li>
+													<li>
+														<a class="nav-link" href="{% url 'home_page' %}#talim-yonalishlari">
+															Yo'nalishlar
+														</a>
+													</li>
+													<li>
+														<a class="nav-link" href="{% url 'home_page' %}#qollanma">
+															Qo'llanma
+														</a>
+													</li>
+													<li>
+														<a class="nav-link" href="{% url 'home_page' %}#faq">
+															FAQ
+														</a>
+													</li>
+													<li class="d-lg-none d-flex justify-content-center">
+														{% if request.user.is_authenticated %}
+															<a class="nav-link" style="color: #212529;" href="{% url 'cabinet' %}">
+																{{request.user.name}}
+															</a>
+														{% else %}
+															<a class="nav-link" style="color: #212529;" href="{% url 'login' %}">
+																Kirish
+															</a>
+															<a>/</a>
+															<a class="nav-link" style="color: #212529;" href="{% url 'register' %}">
+																Ro'yhatdan o'tish
+															</a>
+														{% endif %}
+
+													</li>
+												</ul>
+											</nav>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="header-column header-column-search justify-content-end align-items-center d-flex w-auto flex-row">
+								{% if request.user.is_authenticated %}
+									<a href="{% url 'cabinet' %}" class="btn btn-dark custom-btn-style-1 font-weight-semibold text-3-5 btn-px-3 py-2 ws-nowrap ms-4 d-none d-lg-block" data-cursor-effect-hover="plus" data-cursor-effect-hover-color="light"><span>{{request.user.name}}</span></a>
+								{% else %}
+									<a href="{% url 'login' %}" class="btn btn-dark custom-btn-style-1 font-weight-semibold text-3-5 btn-px-3 py-2 ws-nowrap ms-4 d-none d-lg-block" data-cursor-effect-hover="plus" data-cursor-effect-hover-color="light"><span>Kirish</span></a>
+									<a href="{% url 'register' %}" class="btn btn-dark custom-btn-style-1 font-weight-semibold text-3-5 btn-px-3 py-2 ws-nowrap ms-4 d-none d-lg-block" data-cursor-effect-hover="plus" data-cursor-effect-hover-color="light"><span>Ro'yhatdan o'tish</span></a>
+								{% endif %}
+								<button class="btn header-btn-collapse-nav" data-bs-toggle="collapse" data-bs-target=".header-nav-main nav">
+									<i class="fas fa-bars"></i>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</header>
+
+			{%  block content%}{% endblock content %}
+
+			<footer id="footer" class="border-top-0 m-0 lazyload"
+			style="background-size: cover; background-position: center; background-repeat: no-repeat;">
+			<div class="container pt-3">
+				<div class="row justify-content-between align-items-center py-5 mb-3">
+					<div class="col-auto mb-4 mb-lg-0">
+						<h2 class="font-weight-semibold text-color-light text-10 ls-0 mb-0">Xalqaro Innovatsion Universitet</h2>
+					</div>
+					<div class="col-auto">
+						<a href="{% url 'home_page' %}#aboutus"
+							class="btn btn-primary custom-btn-style-1 font-weight-medium btn-px-4 btn-py-2 text-4"
+							data-cursor-effect-hover="plus" data-cursor-effect-hover-color="light">
+							<span class="text-color-light">Biz haqimizda</span>
+						</a>
+					</div>
+				</div>
+				<hr class="bg-color-light opacity-1 my-0">
+				<div class="row pt-3 mt-5">
+					<div class="col-lg-3 mb-4 mb-lg-0">
+						<a href="{% url 'home_page' %}" class="text-decoration-none">
+							<img src="{{site_settings.footer_logo.url}}" class="img-fluid mb-4"
+								width="123" height="33" alt="" />
+						</a>
+						<p class="text-3-5">Saytda nashr qilinayotgan ma'lumotlar uchun mualliflar javobgar. Saytdagi har qanday ma'lumotdan foydalanishga, bizning saytga havola ko'rsatish sharti bilan ruxsat etiladi. </p>
+						<ul
+							class="social-icons social-icons-clean social-icons-clean-with-border social-icons-medium social-icons-icon-light">
+							<li class="social-icons-youtube"><a href="https://www.youtube.com/@xiu_edu_uz" target="_blank"
+									title="Facebook" data-cursor-effect-hover="fit"><i
+										class="fab fa-youtube"></i></a></li>
+							<li class="social-icons-instagram mx-2"><a href="https://instagram.com/effect_edu_xi_universitet/" target="_blank"
+									title="Twitter" data-cursor-effect-hover="fit"><i class="fab fa-instagram"></i></a>
+							</li>
+							<li class="social-icons-twitter"><a href="https://t.me/EFFECT_EDU_XIU" target="_blank"
+									title="Linkedin" data-cursor-effect-hover="fit"><i
+										class="fab fa-telegram"></i></a></li>
+						</ul>
+					</div>
+					<div class="col-lg-3 mb-4 mb-lg-0">
+						<ul class="list list-icons list-icons-lg">
+							<li class="d-flex px-0 mb-1">
+								<img width="25" src="{% static 'img/demos/business-consulting-3/icons/phone.svg' %}" alt="Phone Icon"
+									data-icon
+									data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-light'}" />
+								<a href="tel:{{site_settings.phone_1}}"
+									class="text-color-light font-weight-semibold text-3-4 ms-2">{{site_settings.phone_1}}</a>
+							</li>
+							<li class="d-flex px-0 my-3">
+								<img width="25" src="{% static 'img/demos/business-consulting-3/icons/email.svg' %}" alt="Email Icon"
+									data-icon
+									data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-light'}" />
+								<a href="mailto:info@xiuedu.uz"
+									class="text-color-light font-weight-semibold text-3-4 ms-2"><span>info@xiuedu.uz</span></a>
+							</li>
+							<li class="d-flex font-weight-semibold text-color-light px-0 mb-1">
+								<img width="25" src="{% static 'img/demos/business-consulting-3/icons/map-pin.svg' %}" alt="Location"
+									data-icon
+									data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-light me-2'}" />
+									Qarshi shahri I.Karimov ko'chasi 405-uy. Eski politexnikum kolleji binosi
+							</li>
+						</ul>
+					</div>
+					<div class="col-lg-4 mb-4 mb-lg-0">
+						<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3105.9299461817673!2d65.8043508755149!3d38.87984457172779!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f4ea7a6cb5632f1%3A0x70a8533f99394a4f!2sXalqaro%20Innovatsion%20Universitet!5e0!3m2!1suz!2s!4v1684997044656!5m2!1suz!2s" width="300" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+					</div>
+					<div class="col-lg-2">
+						<h4 class="font-weight-bold text-5">Manzillar</h4>
+						<ul class="list list-icons list-icons-sm">
+							<li>
+								<i class="fas fa-angle-right text-color-default"></i>
+								<a href="{% url 'home_page' %}#aboutus" class="link-hover-style-1 ms-1">
+									Biz haqimizda</a>
+							</li>
+							<li>
+								<i class="fas fa-angle-right text-color-default"></i>
+								<a href="{% url 'home_page' %}#talim-yonalishlari" class="link-hover-style-1 ms-1">Ta'lim yo'nalishlari</a>
+							</li>
+							<li>
+								<i class="fas fa-angle-right text-color-default"></i>
+								<a href="{% url 'home_page' %}#qollanma" class="link-hover-style-1 ms-1"> Video qo'llanma</a>
+							</li>
+							<li>
+								<i class="fas fa-angle-right text-color-default"></i>
+								<a href="{% url 'home_page' %}#faq" class="link-hover-style-1 ms-1"> FAQs</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="footer-copyright container bg-transparent">
+				<div class="row pb-5">
+					<div class="col-lg-12 text-center m-0">
+						<hr class="bg-color-light opacity-1 mt-5 mb-4">
+						<p class="text-3-4">© 2023 Xalqaro Innovatsion Universitet. Barcha huquqlar himoyalangan!</p>
+					</div>
+				</div>
+			</div>
+		</footer>
+		</div>
+
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script src="{% static 'vendor/plugins/js/plugins.min.js' %}"></script>
+
+		<!-- Theme Base, Components and Settings -->
+		<script src="{% static 'js/theme.js' %}"></script>
+
+		<!-- Current Page Vendor and Views -->
+		<script src="{% static 'js/views/view.contact.js' %}"></script>
+
+		<!-- Theme Initialization Files -->
+		<script src="{% static 'js/theme.init.js' %}"></script>
+
+	{% block js_script %}
+	{% endblock js_script %}
+		<script>
+			console.clear();
+		</script>
+	</body>
+
+</html>

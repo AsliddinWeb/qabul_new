@@ -1,0 +1,502 @@
+{% extends 'cabinet.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}Kabinet{% endblock title %}
+
+{% block div %}
+<div class="personal card p-3">
+    {% if ariza_info %}
+        {% if ariza_info.status == "Topshirildi" %}
+            <h1 class="text-center">Umumiy ma'lumotlar</h1>
+            <div class="card p-3 table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">ID</th>
+                      <th scope="col">{{ ariza_info.id }}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                <tr>
+                  <th scope="row">Familiya</th>
+                  <td>{{ ariza_info.passport.last_name }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Ism</th>
+                  <td>{{ ariza_info.passport.first_name }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Otasining ismi</th>
+                  <td>{{ ariza_info.passport.other_name }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Tug'ilgan sanasi</th>
+                  <td>{{ ariza_info.passport.birth_day }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Jinsi</th>
+                  <td>{{ ariza_info.passport.gender }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Fuqaroligi</th>
+                  <td>{{ ariza_info.passport.fuqaroligi }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Millati</th>
+                  <td>{{ ariza_info.passport.nation }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Viloyat</th>
+                  <td>{{ ariza_info.passport.viloyat }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Tuman/Shahar</th>
+                  <td>{{ ariza_info.passport.tuman }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Ko'cha nomi, uy va xonadon raqami</th>
+                  <td>{{ ariza_info.passport.manzil }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Passport seriya va raqami</th>
+                  <td>{{ ariza_info.passport.passport_series }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">JSHSHIR</th>
+                  <td>{{ ariza_info.passport.passport_jshshir }}</td>
+                </tr>
+                {% if ariza_info.is_perevod %}
+                    <tr>
+                      <th scope="row">Oldingi ta'lim muassa davlati</th>
+                      <td>{{ ariza_info.perevod_diplom.davlat }}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Universitet nomi</th>
+                      <td>{{ ariza_info.perevod_diplom.unv_nomi }}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">O'quv yili uchun tanlangan kurs</th>
+                      <td>{{ ariza_info.perevod_diplom.kurs }}</td>
+                    </tr>
+                {% else %}
+                    <tr>
+                      <th scope="row">Ma'lumoti</th>
+                      <td>{{ ariza_info.diplom.malumot_turi }}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Muassasa turi</th>
+                      <td>{{ ariza_info.diplom.muassasa_turi }}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Muassasa nomi</th>
+                      <td>{{ ariza_info.diplom.muassasa_nomi }}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Tugatgan yili</th>
+                      <td>{{ ariza_info.diplom.tugatgan_yili }}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Muassasa joylashgan viloyat</th>
+                      <td>{{ ariza_info.diplom.tugatgan_muassasa_joylashgan_viloyat }}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Muassasa joylashgan tuman/shahar</th>
+                      <td>{{ ariza_info.diplom.tugatgan_muassasa_joylashgan_tuman }}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Hujjat seriya va raqami</th>
+                      <td>{{ ariza_info.diplom.diplom_seriya }}</td>
+                    </tr>
+                {% endif %}
+                  <tr>
+                  <th scope="row">Telefon raqami</th>
+                  <td>{{ ariza_info.abituriyent.phone_number }}</td>
+                </tr>
+                  <tr>
+                      <th scope="row">Xujjat topshirilgan sana</th>
+                      <td>{{ ariza_info.created_at }}</td>
+                  </tr>
+                  <tr>
+                      <th scope="row">Ta'lim shakli</th>
+                      <td>{{ ariza_info.talim_shakli }}</td>
+                  </tr>
+                  <tr>
+                      <th scope="row">Ta'lim yo'nalishi</th>
+                      <td>{{ ariza_info.talim_yonalishi }}</td>
+                  </tr>
+                  <tr>
+                      <th scope="row">Arizangiz xolati</th>
+                      <td>
+                            {% if ariza_info.kvitansiya_upload %}
+                                <div class="alert alert-warning">
+                                    <strong>Ko'rib chiqilmoqda!</strong>
+                                </div>
+                            {% else %}
+                                <div class="alert alert-danger">
+                                    <strong>To'lov amalga oshirilmagan!</strong>
+                                </div>
+                            {% endif %}
+                      </td>
+
+                  </tr>
+              </tbody>
+            </table>
+                        </div>
+
+<!--            <div class="mt-3 alert alert-warning">-->
+<!--                <strong>Hurmatli abituriyent!</strong>-->
+<!--                Arizangiz ko'rib chiqilmoqda arizangiz javobini tez orada sms xabarnoma orqali yuboramiz!-->
+<!--            </div>-->
+
+            <div class="mt-3 alert alert-warning">
+                <strong>Hurmatli abituriyent!</strong>
+                Test sinovida qatnashish uchun bir martalik bazaviy hisoblash
+                miqdorining bir barobarida to'lov qilishingiz zarur!
+
+                <div class="text-center mt-3">
+                    <a href="/media/invoyslar/invoys_{{ariza_info.passport.passport_series}}.docx" class="btn btn-3d btn-primary" type="submit">Kvitansiyani yuklab olish</a>
+                </div>
+            </div>
+            <div class="card p-3">
+                <form action="{% url 'cabinet_upload_pay' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{pay_form|crispy}}
+
+                    <div class="text-center">
+                        <button class="btn btn-success rounded-0 mb-2" type="submit">Yuborish</button>
+                    </div>
+                </form>
+            </div>
+
+        {% elif ariza_info.status == "To'lov qilindi" %}
+            <h1 class="text-center">Umumiy ma'lumotlar</h1>
+            <div class="card p-3 table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">ID</th>
+                      <th scope="col">{{ ariza_info.id }}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                <tr>
+                  <th scope="row">Familiya</th>
+                  <td>{{ ariza_info.passport.last_name }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Ism</th>
+                  <td>{{ ariza_info.passport.first_name }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Otasining ismi</th>
+                  <td>{{ ariza_info.passport.other_name }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Tug'ilgan sanasi</th>
+                  <td>{{ ariza_info.passport.birth_day }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Jinsi</th>
+                  <td>{{ ariza_info.passport.gender }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Fuqaroligi</th>
+                  <td>{{ ariza_info.passport.fuqaroligi }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Millati</th>
+                  <td>{{ ariza_info.passport.nation }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Viloyat</th>
+                  <td>{{ ariza_info.passport.viloyat }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Tuman/Shahar</th>
+                  <td>{{ ariza_info.passport.tuman }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Ko'cha nomi, uy va xonadon raqami</th>
+                  <td>{{ ariza_info.passport.manzil }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Passport seriya va raqami</th>
+                  <td>{{ ariza_info.passport.passport_series }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">JSHSHIR</th>
+                  <td>{{ ariza_info.passport.passport_jshshir }}</td>
+                </tr>
+                {% if ariza_info.is_perevod %}
+                    <tr>
+                      <th scope="row">Oldingi ta'lim muassa davlati</th>
+                      <td>{{ ariza_info.perevod_diplom.davlat }}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Universitet nomi</th>
+                      <td>{{ ariza_info.perevod_diplom.unv_nomi }}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">O'quv yili uchun tanlangan kurs</th>
+                      <td>{{ ariza_info.perevod_diplom.kurs }}</td>
+                    </tr>
+                {% else %}
+                    <tr>
+                      <th scope="row">Ma'lumoti</th>
+                      <td>{{ ariza_info.diplom.malumot_turi }}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Muassasa turi</th>
+                      <td>{{ ariza_info.diplom.muassasa_turi }}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Muassasa nomi</th>
+                      <td>{{ ariza_info.diplom.muassasa_nomi }}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Tugatgan yili</th>
+                      <td>{{ ariza_info.diplom.tugatgan_yili }}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Muassasa joylashgan viloyat</th>
+                      <td>{{ ariza_info.diplom.tugatgan_muassasa_joylashgan_viloyat }}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Muassasa joylashgan tuman/shahar</th>
+                      <td>{{ ariza_info.diplom.tugatgan_muassasa_joylashgan_tuman }}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Hujjat seriya va raqami</th>
+                      <td>{{ ariza_info.diplom.diplom_seriya }}</td>
+                    </tr>
+                {% endif %}
+                  <tr>
+                  <th scope="row">Telefon raqami</th>
+                  <td>{{ ariza_info.abituriyent.phone_number }}</td>
+                </tr>
+                  <tr>
+                      <th scope="row">Xujjat topshirilgan sana</th>
+                      <td>{{ ariza_info.created_at }}</td>
+                  </tr>
+                    <tr>
+                      <th scope="row">Ta'lim shakli</th>
+                      <td>{{ ariza_info.talim_shakli }}</td>
+                  </tr>
+                  <tr>
+                      <th scope="row">Ta'lim yo'nalishi</th>
+                      <td>{{ ariza_info.talim_yonalishi }}</td>
+                  </tr>
+                  <tr>
+                      <th scope="row">Arizangiz xolati</th>
+                      <td>
+                        <div class="alert alert-success">
+                            To'lov amalga oshirildi. <br>Imtihon sanasi kutilmoqda!
+                        </div>
+                    </td>
+                  </tr>
+              </tbody>
+            </table>
+                        </div>
+
+<!--            <div class="alert alert-success">-->
+<!--                Hurmatli abituriyent! Sizning to'lovingiz muvaffaqqiyatli-->
+<!--                    tasdiqlandi. quyidagi tugmacha orqali ma'lumotnomangizni yuklab-->
+<!--                    olishingiz mumkin!-->
+
+<!--                <div class="text-center mt-3">-->
+<!--                    <a href="/media/invoyslar/invoys_{{ariza_info.passport.passport_series}}.docx" class="btn btn-3d btn-primary" type="submit">Yuklab olish</a>-->
+<!--                </div>-->
+<!--            </div>-->
+
+            <div class="alert alert-success">
+                Hurmatli abituriyent! Sizning to'lovingiz muvaffaqqiyatli
+                    tasdiqlandi. Imtihon sanasini tez orada ma'lum qilamiz!
+
+            </div>
+        {% elif ariza_info.status == "O'qishga qabul qilindi" %}
+            <h1 class="text-center text-success">Tabriklaymiz</h1>
+            <div class="alert alert-success">
+                <strong>Siz talabalikka tavsiya etildingiz! </strong>
+            </div>
+        {% elif ariza_info.status == "Bekor qilingan" %}
+            <h1 class="text-center">Umumiy ma'lumotlar</h1>
+            <div class="card p-3 table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">ID</th>
+                      <th scope="col">{{ ariza_info.id }}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                <tr>
+                  <th scope="row">Familiya</th>
+                  <td>{{ ariza_info.passport.last_name }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Ism</th>
+                  <td>{{ ariza_info.passport.first_name }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Otasining ismi</th>
+                  <td>{{ ariza_info.passport.other_name }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Tug'ilgan sanasi</th>
+                  <td>{{ ariza_info.passport.birth_day }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Jinsi</th>
+                  <td>{{ ariza_info.passport.gender }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Fuqaroligi</th>
+                  <td>{{ ariza_info.passport.fuqaroligi }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Millati</th>
+                  <td>{{ ariza_info.passport.nation }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Viloyat</th>
+                  <td>{{ ariza_info.passport.viloyat }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Tuman/Shahar</th>
+                  <td>{{ ariza_info.passport.tuman }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Ko'cha nomi, uy va xonadon raqami</th>
+                  <td>{{ ariza_info.passport.manzil }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Passport seriya va raqami</th>
+                  <td>{{ ariza_info.passport.passport_series }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">JSHSHIR</th>
+                  <td>{{ ariza_info.passport.passport_jshshir }}</td>
+                </tr>
+                {% if ariza_info.is_perevod %}
+                    <tr>
+                      <th scope="row">Oldingi ta'lim muassa davlati</th>
+                      <td>{{ ariza_info.perevod_diplom.davlat }}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Universitet nomi</th>
+                      <td>{{ ariza_info.perevod_diplom.unv_nomi }}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">O'quv yili uchun tanlangan kurs</th>
+                      <td>{{ ariza_info.perevod_diplom.kurs }}</td>
+                    </tr>
+                {% else %}
+                    <tr>
+                      <th scope="row">Ma'lumoti</th>
+                      <td>{{ ariza_info.diplom.malumot_turi }}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Muassasa turi</th>
+                      <td>{{ ariza_info.diplom.muassasa_turi }}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Muassasa nomi</th>
+                      <td>{{ ariza_info.diplom.muassasa_nomi }}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Tugatgan yili</th>
+                      <td>{{ ariza_info.diplom.tugatgan_yili }}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Muassasa joylashgan viloyat</th>
+                      <td>{{ ariza_info.diplom.tugatgan_muassasa_joylashgan_viloyat }}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Muassasa joylashgan tuman/shahar</th>
+                      <td>{{ ariza_info.diplom.tugatgan_muassasa_joylashgan_tuman }}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Hujjat seriya va raqami</th>
+                      <td>{{ ariza_info.diplom.diplom_seriya }}</td>
+                    </tr>
+                {% endif %}
+                  <tr>
+                  <th scope="row">Telefon raqami</th>
+                  <td>{{ ariza_info.abituriyent.phone_number }}</td>
+                </tr>
+                  <tr>
+                      <th scope="row">Xujjat topshirilgan sana</th>
+                      <td>{{ ariza_info.created_at }}</td>
+                  </tr>
+                <tr>
+                      <th scope="row">Ta'lim shakli</th>
+                      <td>{{ ariza_info.talim_shakli }}</td>
+                  </tr>
+                  <tr>
+                      <th scope="row">Ta'lim yo'nalishi</th>
+                      <td>{{ ariza_info.talim_yonalishi }}</td>
+                  </tr>
+                  <tr>
+                      <th scope="row">Arizangiz xolati</th>
+                      <td>
+                            <div class="alert alert-danger">
+                                <strong>Bekor qilindi!</strong>
+                            </div>
+                        </td>
+                  </tr>
+              </tbody>
+            </table>
+                        </div>
+
+            <div class="vc_column_container col-md-12">
+                <div class="wpb_wrapper vc_column-inner mt-3"><h4 class="vc_custom_heading align-left">Arizangiz rad etildi</h4>
+                </div>
+            </div>
+            <div class="vc_column_container col-12">
+            <div class="wpb_wrapper vc_column-inner">
+                <div class="porto-blockquote wpb_content_element ">
+                    <blockquote class=" default blockquote-primary">
+                        <p>
+                            <b>Sabab: </b>{{ariza_info.xatolik_sababi}}
+                        </p>
+                        <footer><cite title="Source Title">Ma'lumotlaringizni to'g'irlab qaytadan ariza yuborishingiz
+                            mumkin!</cite></footer>
+                    </blockquote>
+                </div>
+                <div class="vc_empty_space" style="height: 20px"><span class="vc_empty_space_inner"></span></div>
+            </div>
+        </div>
+
+        {% endif %}
+
+    {% else %}
+        <h1 class="text-center">Ma'lumotlar</h1>
+        <form role="form" class="needs-validation">
+        <div class="form-group row">
+            <label
+                    class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2 required">Ism
+                familiya</label>
+            <div class="col-lg-9">
+                <input class="form-control text-3 h-auto py-2" type="text"
+                       value="{{request.user.name}}" disabled>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label
+                    class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2 required">Telefon
+                raqam</label>
+            <div class="col-lg-9">
+                <input class="form-control text-3 h-auto py-2" type="tel"
+                       value="{{request.user.phone_number}}" disabled>
+            </div>
+        </div>
+    </form>
+        <div class="d-flex justify-content-end">
+            <a href="{% url 'cabinet_passport' %}" class="btn btn-primary custom-btn-style-1 btn-px-2 btn-py-2 text-2" data-cursor-effect-hover="plus" data-cursor-effect-hover-color="light">
+							<span class="text-color-light">Keyingi qadam</span>
+						</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock div %}

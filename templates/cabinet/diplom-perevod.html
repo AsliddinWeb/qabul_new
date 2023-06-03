@@ -1,0 +1,20 @@
+{% extends 'cabinet.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}Diplom ma'lumotlari{% endblock title %}
+
+{% block div %}
+	<div class="border p-3 text-center">
+		<a href="{% url 'cabinet_diplom' %}" class="btn btn-outline btn-primary rounded-0 mb-2">O'qishga topshirish</a>
+		<a class="btn btn-primary rounded-0 mb-2">O'qishni ko'chirish</a>
+	</div>
+	<div class="passport card p-3">
+	<h1 class="text-center">Diplom ma'lumotlari</h1>
+	<form method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+		{{perevod_diplom_form|crispy}}
+		<button type="submit" class="btn btn-primary">Saqlash</button>
+	</form>
+</div>
+{% endblock div %}

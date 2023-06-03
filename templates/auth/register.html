@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}Ro'yhatdan o'tish{% endblock title %}
+
+{% block content %}
+<div role="main" class="main">
+	<div class="container" style="max-width: 800px;">
+		<div class="row align-items-center py-4 my-5 my-xl-5 box-shadow-4">
+            <h1 class="text-center">Ro'yhatdan o'tish</h1>
+
+			<div class="col-12">
+                <form class="appear-animation" method="POST" data-appear-animation="fadeIn" data-appear-animation-delay="600">
+                    {% csrf_token %}
+                    <div>
+                        {% include 'components/msg.html' %}
+                    </div>
+
+                    <div class="form-row">
+                        {{form|crispy}}
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <button type="submit" class="btn btn-primary btn-modern"  data-loading-text="Loading...">Ro'yhatdan o'tish</button>
+                            <a href="{% url 'login' %}" class="btn" data-loading-text="Loading...">Kirish</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+		</div>
+	</div>
+</div>
+{% endblock content %}
