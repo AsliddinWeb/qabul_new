@@ -227,7 +227,25 @@ def CABINET_ARIZA(request):
         ariza_form = ArizaForm(request.POST or None, instance=obj)
 
         if ariza_form.is_valid():
-            ariza_form.save()
+            ariza = ariza_form.save(commit=False)
+            ariza.talim_turi = "Bakalavr"
+            ariza.talim_shakli = TalimShakli.objects.get(id=ariza.talim_shakli).name
+            ariza.talim_yonalishi = TalimYonalishi.objects.get(id=ariza.talim_yonalishi).name
+
+            if perevod_diplom_info:
+                ariza.is_perevod = True
+
+                ariza.perevod_diplom = perevod_diplom_info
+            else:
+                ariza.diplom = diplom_info
+
+            # INVOYS GENERATSIYA =================
+            name = f"{ariza.passport.last_name} {ariza.passport.first_name} {ariza.passport.other_name}"
+            create_word_template(name, ariza.passport.passport_series)
+
+            # =================================
+
+            ariza.save()
             messages.success(request, "Arizangiz muvaffaqqiyatli o'zgartirildi!")
             return redirect('cabinet')
         ctx['ariza_form'] = ariza_form
